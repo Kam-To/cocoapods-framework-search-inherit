@@ -1,0 +1,1 @@
+require 'cocoapods-framework-search-inherit/Main'
