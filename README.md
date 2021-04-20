@@ -24,7 +24,7 @@ In Podfile:
 	# to load the plugin
 	plugin 'cocoapods-framework-search-inherit'
 	
-	# declear target dependency
+	# declare target dependency
 	framework_search_path_inherit_chain('DynamicFramework', 'MainApp')
 
 ## License
