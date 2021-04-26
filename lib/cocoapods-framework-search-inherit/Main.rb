@@ -52,17 +52,17 @@ module CocoapodsFrameworkSearchInherit
         FrameworkSearchPathKey = 'FRAMEWORK_SEARCH_PATHS'
 
         thisInstaller.aggregate_targets.each { |target|
-#            puts "targets  : #{target}"
+            puts "targets  : #{target}"
             if targetNameMapSearchPathInfo[target.name] then
                 info = targetNameMapSearchPathInfo[target.name]
                 target.xcconfigs.each { |config_name, config_file|
-#                    puts "|___ config #{config_name}"
+                    puts "|___ config #{config_name}"
 
                     # remove '$(inherited) '
                     appened = config_file.attributes[FrameworkSearchPathKey].dup.gsub! '$(inherited) ', ''
                     info.configNameMapAppend[config_name] = appened
-#                    puts "   |___ framework search paths: #{appened}"
-#                    puts ""
+                    puts "   |___ framework search paths: #{appened}"
+                    puts ""
                 }
             end            
         }
@@ -83,7 +83,7 @@ module CocoapodsFrameworkSearchInherit
             info.target.xcconfigs.each { |config_name, config_file| 
 
                 origin = config_file.attributes[FrameworkSearchPathKey].dup
-#                puts "|___#{config_name}    origin: #{origin}"
+                puts "|___#{config_name}    origin: #{origin}"
 
                 appened = ""
                 for i in 0..(idx-1)
@@ -93,7 +93,7 @@ module CocoapodsFrameworkSearchInherit
 
                 replacement = origin << appened
                 config_file.attributes[FrameworkSearchPathKey] = replacement
-#                puts "|___#{config_name}  appended: #{replacement}"
+                puts "|___#{config_name}  appended: #{replacement}"
 
                 xcconfig_path = info.target.xcconfig_path(config_name)
                 config_file.save_as(xcconfig_path)
