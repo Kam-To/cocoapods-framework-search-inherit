@@ -9,7 +9,7 @@ This plugin is used to resolve the problem that, the frameworks search path do n
 		
 the MainApp target embed the DyanmicFramework. And because iOS 8 limit the binary's TEXT section size in 60MB, we let all the pod we need defined in Podfile targeting at DynamicFramework, to build only single dynamic library as possible. That reduces the size of MainApp and the dyld loading time.
 
-But there is a little problem here, where the pod targeting to DyanmicFramework only provide a framework object, eg FooFramework, that means MainApp could not found or import FooFramework's header, and the DynamicFramewokr could.
+But there is a little problem here, where the pod targeting to DyanmicFramework only provide a framework object, eg FooFramework, that means MainApp could not found or import FooFramework's header, but the DynamicFramework does.
 
 Use this plugin can append DynamicFramework's framework search path to MainApp's.
 		
